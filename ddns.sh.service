@@ -1,0 +1,13 @@
+[Unit]
+Description=ddns.sh is a cloudflare ddns client
+After=network-online.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ddns.sh
+RemainAfterExit=yes
+EnvironmentFile=/etc/ddns.conf
+
+[Install]
+WantedBy=multi-user.target
